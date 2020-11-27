@@ -2,10 +2,15 @@ package com.example.cuahangonline.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,10 +28,12 @@ import java.util.ArrayList;
 public class sanphamadapter extends RecyclerView.Adapter<sanphamadapter.ItemHolder> {
     Context context;
     ArrayList<sanpham> arraysanpham;
+    private LinearLayout.LayoutParams params;
 
-    public sanphamadapter(Context context, ArrayList<sanpham> arraysanpham) {
+    public sanphamadapter(Context context, ArrayList<sanpham> arraysanpham,int column) {
         this.context = context;
         this.arraysanpham = arraysanpham;
+        params=new TableLayout.LayoutParams(getDeviceWidth(context)/column,getDeviceWidth(context)*3/8);
     }
 
     @NonNull
@@ -47,6 +54,7 @@ public class sanphamadapter extends RecyclerView.Adapter<sanphamadapter.ItemHold
                 .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
                 .into(holder.imghinhanhsanpham);
+        //holder.getView().setLayoutParams(params);
     }
 
     @Override
@@ -57,6 +65,7 @@ public class sanphamadapter extends RecyclerView.Adapter<sanphamadapter.ItemHold
     public class ItemHolder extends RecyclerView.ViewHolder{
         public ImageView imghinhanhsanpham;
         public TextView txttensanpham, txtgiasanpham;
+        View view;
 
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +82,24 @@ public class sanphamadapter extends RecyclerView.Adapter<sanphamadapter.ItemHold
                     context.startActivity(intent);
                 }
             });
+            view=itemView;
+        }
+        public View getView() {
+            return view;
+        }
+
+    }
+
+    public static int getDeviceWidth(Context context) {
+
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            Point point = new Point();
+            wm.getDefaultDisplay().getSize(point);
+            return point.x;
+        } else {
+            return wm.getDefaultDisplay().getWidth();
         }
     }
 }

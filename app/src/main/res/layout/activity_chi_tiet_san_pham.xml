@@ -9,32 +9,34 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarchitietsanpham"
         app:title="Chi tiết sản phẩm"
-        app:titleTextColor="#333131"
-        android:background="#C3958E"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
     </androidx.appcompat.widget.Toolbar>
     <LinearLayout
         android:orientation="horizontal"
+        android:weightSum="10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/imagechitietsanpham"
             android:src="@mipmap/ic_launcher"
             android:layout_margin="10dp"
-            android:layout_width="175dp"
+            android:layout_width="0dp"
+            android:layout_weight="4"
             android:scaleType="fitXY"
-            android:layout_height="175dp">
+            android:layout_height="150dp">
         </ImageView>
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
+            android:layout_weight="6"
+            android:layout_width="0dp"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/textviewtenchitietsanpham"
                 android:text="Tên sản phẩm"
-                android:textStyle="bold"
-                android:textColor="#201E1E"
+                android:textColor="#CC000000"
                 android:layout_margin="5dp"
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
@@ -44,7 +46,7 @@
                 android:layout_marginStart="5dp"
                 android:textSize="20sp"
                 android:text="Giá sản phẩm"
-                android:textColor="#F00000"
+                android:textColor="@color/colorToolbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <Spinner
@@ -61,8 +63,10 @@
                 android:id="@+id/buttondatmua"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
-                android:background="#FD6767"
+                android:background="@drawable/button_custom"
                 android:textSize="15sp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Thêm giỏ hàng"
                 android:layout_width="wrap_content"
@@ -78,19 +82,19 @@
             android:layout_marginTop="5dp"
             android:paddingStart="15dp"
             android:padding="5dp"
-            android:textSize="30sp"
-            android:background="#ADED62"
+            android:textSize="25sp"
+            android:background="#97D64C"
             android:text="Mô tả sản phẩm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <TextView
                 android:id="@+id/textviewmotachitietsanpham"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_margin="7dp"
                 android:textSize="20sp"
+                android:textColor="#B3000000"
                 android:paddingBottom="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

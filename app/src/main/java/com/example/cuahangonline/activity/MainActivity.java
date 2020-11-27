@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     ViewFlipper viewFlipper;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView,recyclerView1,recyclerView2,recyclerView3;
     NavigationView navigationView;
     ListView listView;
     DrawerLayout drawerLayout;
@@ -244,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
     private void ActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_view_headline_24);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -257,6 +258,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbarmanhinhchinh);
         viewFlipper = (ViewFlipper) findViewById(R.id.viewflipper);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView1 = (RecyclerView) findViewById(R.id.recyclerview1);
+        recyclerView2 = (RecyclerView) findViewById(R.id.recyclerview2);
+        recyclerView3 = (RecyclerView) findViewById(R.id.recyclerview3);
         navigationView = (NavigationView) findViewById(R.id.navigationview);
         listView = (ListView) findViewById(R.id.listviewmanhinhchinh);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawverlayout);
@@ -265,9 +269,19 @@ public class MainActivity extends AppCompatActivity {
         loaispadapter = new loaispadapter(mangloaisp, getApplicationContext());
         listView.setAdapter(loaispadapter);
         mangsanpham = new ArrayList<>();
-        sanphamadapter = new sanphamadapter(getApplicationContext(), mangsanpham);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),3 ));
+
+        sanphamadapter = new sanphamadapter(getApplicationContext(), mangsanpham,3);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.HORIZONTAL,false));
         recyclerView.setAdapter(sanphamadapter);
+
+        recyclerView1.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.HORIZONTAL,false));
+        recyclerView1.setAdapter(sanphamadapter);
+
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.HORIZONTAL,false));
+        recyclerView2.setAdapter(sanphamadapter);
+
+        recyclerView3.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.HORIZONTAL,false));
+        recyclerView3.setAdapter(sanphamadapter);
         if (manggiohang != null){
 
         } else {

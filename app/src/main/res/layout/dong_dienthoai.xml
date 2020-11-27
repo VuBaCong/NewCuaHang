@@ -18,7 +18,7 @@
                 android:layout_margin="2dp"
                 android:adjustViewBounds="true"
                 android:id="@+id/imageviewdienthoai"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 android:layout_width="100dp"
                 android:layout_height="100dp"/>
             <LinearLayout

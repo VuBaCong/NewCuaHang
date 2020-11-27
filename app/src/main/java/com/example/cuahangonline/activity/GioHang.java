@@ -123,6 +123,7 @@ public class GioHang extends AppCompatActivity {
     private void ActionToolbar() {
         setSupportActionBar(toolbarGioHang);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarGioHang.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
         toolbarGioHang.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

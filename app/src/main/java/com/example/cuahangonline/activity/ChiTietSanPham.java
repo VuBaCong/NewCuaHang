@@ -122,9 +122,10 @@ public class ChiTietSanPham extends AppCompatActivity {
     private void Actiontoolbar() {
         setSupportActionBar(toolbarChiTiet);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbarChiTiet.setOnClickListener(new View.OnClickListener() {
+        toolbarChiTiet.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
+        toolbarChiTiet.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });
