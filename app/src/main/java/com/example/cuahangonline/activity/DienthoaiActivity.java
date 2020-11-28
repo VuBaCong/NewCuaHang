@@ -113,7 +113,7 @@ public class DienthoaiActivity extends AppCompatActivity {
 
     private void Getdata(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String duongdan = server.Duongdandienthoai+String.valueOf(Page);
+        String duongdan = server.Duongdandienthoai+String.valueOf(Page)+"&idloaisanpham=1";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -134,7 +134,7 @@ public class DienthoaiActivity extends AppCompatActivity {
                             Giadt = jsonObject.getInt("giasanpham");
                             Hinhanhdt = jsonObject.getString("hinhanhsanpham");
                             Motadt = jsonObject.getString("motasanpham");
-                            idspdt = jsonObject.getInt("idsanpham");
+                            idspdt = jsonObject.getInt("idloaisanpham");
                             mangdt.add(new sanpham(id,Tendt,Giadt,Hinhanhdt,Motadt,idspdt));
                             dienthoaiadapter.notifyDataSetChanged();
                         }
@@ -152,20 +152,14 @@ public class DienthoaiActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param = new HashMap<String, String>();
-                param.put("idsanpham", String.valueOf(iddt));
-                return param;
-            }
-        };
+        });
         requestQueue.add(stringRequest);
     }
 
     private void Actiontoolbar() {
         setSupportActionBar(toolbardt);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbardt.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
         toolbardt.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

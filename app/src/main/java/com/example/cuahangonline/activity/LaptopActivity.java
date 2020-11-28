@@ -111,7 +111,7 @@ public class LaptopActivity extends AppCompatActivity {
 
     private void Getdata(int Page) {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String duongdan = server.Duongdandienthoai+String.valueOf(Page);
+        String duongdan = server.Duongdandienthoai+String.valueOf(Page)+"&idloaisanpham=2";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -132,7 +132,7 @@ public class LaptopActivity extends AppCompatActivity {
                             Gialaptop = jsonObject.getInt("giasanpham");
                             Hinhanhlaptop = jsonObject.getString("hinhanhsanpham");
                             Motalaptop = jsonObject.getString("motasanpham");
-                            idsplaptop = jsonObject.getInt("idsanpham");
+                            idsplaptop = jsonObject.getInt("idloaisanpham");
                             manglaptop.add(new sanpham(id,Tenlaptop,Gialaptop,Hinhanhlaptop,Motalaptop,idsplaptop));
                             laptopadapter.notifyDataSetChanged();
                         }
@@ -150,20 +150,14 @@ public class LaptopActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
             }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> param = new HashMap<String, String>();
-                param.put("idsanpham", String.valueOf(idlaptop));
-                return param;
-            }
-        };
+        });
         requestQueue.add(stringRequest);
     }
 
     private void Actiontoolbar() {
         setSupportActionBar(toolbarlaptop);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarlaptop.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
         toolbarlaptop.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,7 +8,7 @@ public class sanpham implements Serializable {
     public Integer Giasp;
     public String Hinhanhsp;
     public String Motasp;
-    public int Idsp;
+    public int idloaisanpham;
 
     public sanpham(int id, String tensp, Integer giasp, String hinhanhsp, String motasp, int idsp) {
         this.id = id;
@@ -16,7 +16,7 @@ public class sanpham implements Serializable {
         Giasp = giasp;
         Hinhanhsp = hinhanhsp;
         Motasp = motasp;
-        Idsp = idsp;
+        idloaisanpham = idsp;
     }
 
     public int getId() {
@@ -59,11 +59,11 @@ public class sanpham implements Serializable {
         Motasp = motasp;
     }
 
-    public int getIdsp() {
-        return Idsp;
+    public int getIdloaisanpham() {
+        return idloaisanpham;
     }
 
-    public void setIdsp(int idsp) {
-        Idsp = idsp;
+    public void setIdloaisanpham(int idloaisanpham) {
+        this.idloaisanpham = idloaisanpham;
     }
 }

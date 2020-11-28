@@ -9,8 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,15 +23,13 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class sanphamadapter extends RecyclerView.Adapter<sanphamadapter.ItemHolder> {
+public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHolder> {
     Context context;
     ArrayList<sanpham> arraysanpham;
-    private LinearLayout.LayoutParams params;
 
-    public sanphamadapter(Context context, ArrayList<sanpham> arraysanpham,int column) {
+    public SanPhamAdapter(Context context, ArrayList<sanpham> arraysanpham) {
         this.context = context;
         this.arraysanpham = arraysanpham;
-        params=new TableLayout.LayoutParams(getDeviceWidth(context)/column,getDeviceWidth(context)*3/8);
     }
 
     @NonNull
@@ -54,7 +50,6 @@ public class sanphamadapter extends RecyclerView.Adapter<sanphamadapter.ItemHold
                 .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
                 .into(holder.imghinhanhsanpham);
-        //holder.getView().setLayoutParams(params);
     }
 
     @Override

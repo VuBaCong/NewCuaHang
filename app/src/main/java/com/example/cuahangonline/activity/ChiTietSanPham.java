@@ -108,7 +108,7 @@ public class ChiTietSanPham extends AppCompatActivity {
         giaChiTiet = sanpham.getGiasp();
         hinhanhChiTiet = sanpham.getHinhanhsp();
         motaChitiet = sanpham.getMotasp();
-        idsanpham = sanpham.getIdsp();
+        idsanpham = sanpham.getIdloaisanpham();
         txtTen.setText(tenChiTiet);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtGia.setText("Giá : " + decimalFormat.format(giaChiTiet) + " Đ" );

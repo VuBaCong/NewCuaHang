@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".activity.DienthoaiActivity">
     <androidx.appcompat.widget.Toolbar
-        android:background="#837674"
-        android:titleTextColor="#FAF8F7"
+        android:background="@color/colorToolbar"
         app:title="Điện thoại"
+        app:titleTextColor="@android:color/white"
         android:id="@+id/toolbardienthoai"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
