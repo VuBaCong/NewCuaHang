@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Cuahangonline</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pref_file">preference_file</string>
+    <string name="pref_login_status">preference_login_status</string>
+    <string name="pref_alphabet_status">preference_alphabet_status</string>
+    <string name="pref_email">preference_email</string>
+    <string name="pref_path">preference_path</string>
+    <string name="pref_iduser">pref_iduser</string>
+    <string name="pref_checkadmin">checkadmin</string>
+    <string name="pref_username">preference_username</string>
+    <string name="pref_password">preference_password</string>
+    <string name="login_fail">Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu!</string>
+    <string name="onfailure_login">Đã xảy ra lỗi. Vui lòng kiểm tra lại!</string>
+    <string name="no_network">Vui lòng kiểm tra lại cài đặt mạng!</string>
+    <string name="login_empty">Vui lòng nhập đầy đủ thông tin!</string>
+    <string name="password_short">Mật khẩu phải dài hơn 6 ký tự.</string>
+    <string name="register_success">Đăng ký thành công.</string>
+    <string name="register_exits">Tài khoản đã tồn tại, vui lòng thử lại!</string>
+    <string name="register_error">Có lỗi xảy ra, vui lòng thử lại!</string>
+    <string name="upload_image_success">Cập nhật ảnh thành công.</string>
+    <string name="title_change_avatar">Thay đổi ảnh đại diện.</string>
+    <string name="content_change_avatar">Bạn có muốn thay đổi ảnh đại diện không?</string>
 </resources>

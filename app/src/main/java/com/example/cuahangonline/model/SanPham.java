@@ -2,7 +2,7 @@ package com.example.cuahangonline.model;
 
 import java.io.Serializable;
 
-public class sanpham implements Serializable {
+public class SanPham implements Serializable {
     public int id;
     public String Tensp;
     public Integer Giasp;
@@ -10,7 +10,7 @@ public class sanpham implements Serializable {
     public String Motasp;
     public int idloaisanpham;
 
-    public sanpham(int id, String tensp, Integer giasp, String hinhanhsp, String motasp, int idsp) {
+    public SanPham(int id, String tensp, Integer giasp, String hinhanhsp, String motasp, int idsp) {
         this.id = id;
         Tensp = tensp;
         Giasp = giasp;

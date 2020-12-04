@@ -54,25 +54,8 @@
         android:id="@+id/navigationview"
         android:layout_gravity="start"
         android:layout_width="match_parent"
+        app:headerLayout="@layout/header_layout"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:text="User"
-                android:textSize="25dp"
-                android:background="@color/colorToolbar"
-                android:gravity="center"
-                android:textColor="@android:color/white"
-                android:layout_height="80dp"/>
-            <ListView
-                android:id="@+id/listviewmanhinhchinh"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </ListView>
-        </LinearLayout>
 
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

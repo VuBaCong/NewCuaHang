@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:weightSum="10"
     android:layout_margin="5dp"
-    android:layout_height="100dp">
+    android:layout_height="120dp">
     <LinearLayout
         android:layout_weight="3"
         android:layout_width="0dp"
@@ -38,7 +38,7 @@
             android:layout_weight="4"
             android:layout_height="0dp"/>
         <TextView
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:text="Giá sản phẩm"
             android:textColor="#f20"
             android:gravity="center_vertical"
@@ -48,7 +48,7 @@
             android:layout_weight="2"/>
         <TextView
             android:text="Mô tả điện thoại"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:id="@+id/textviewmotadienthoai"
             android:layout_width="match_parent"
             android:layout_weight="4"

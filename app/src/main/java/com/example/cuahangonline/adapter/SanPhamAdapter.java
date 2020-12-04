@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.activity.ChiTietSanPham;
-import com.example.cuahangonline.model.sanpham;
+import com.example.cuahangonline.model.SanPham;
 import com.example.cuahangonline.utils.checkconnection;
 import com.squareup.picasso.Picasso;
 
@@ -25,9 +25,9 @@ import java.util.ArrayList;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHolder> {
     Context context;
-    ArrayList<sanpham> arraysanpham;
+    ArrayList<SanPham> arraysanpham;
 
-    public SanPhamAdapter(Context context, ArrayList<sanpham> arraysanpham) {
+    public SanPhamAdapter(Context context, ArrayList<SanPham> arraysanpham) {
         this.context = context;
         this.arraysanpham = arraysanpham;
     }
@@ -42,7 +42,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        sanpham sanpham = arraysanpham.get(position);
+        SanPham sanpham = arraysanpham.get(position);
         holder.txttensanpham.setText(sanpham.getTensp());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         holder.txtgiasanpham.setText("Giá : " + decimalFormat.format(sanpham.getGiasp()) + " Đ");
@@ -73,7 +73,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
                     Intent intent = new Intent(context, ChiTietSanPham.class);
                     intent.putExtra("thongtinsanpham", arraysanpham.get(getPosition()));
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    checkconnection.ShowToast_Short(context, arraysanpham.get(getPosition()).getTensp());
                     context.startActivity(intent);
                 }
             });
@@ -85,16 +84,4 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHold
 
     }
 
-    public static int getDeviceWidth(Context context) {
-
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            Point point = new Point();
-            wm.getDefaultDisplay().getSize(point);
-            return point.x;
-        } else {
-            return wm.getDefaultDisplay().getWidth();
-        }
-    }
 }

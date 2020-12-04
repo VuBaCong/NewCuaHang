@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,7 +15,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.model.DanhMuc;
-import com.example.cuahangonline.model.sanpham;
+import com.example.cuahangonline.model.SanPham;
 import com.example.cuahangonline.utils.server;
 
 import org.json.JSONArray;
@@ -24,8 +23,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,8 +32,8 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
     private ArrayList<DanhMuc> mangDanhMuc;
     private Context context;
 
-    public DanhMucAdapter(Context context,ArrayList<DanhMuc> mangDanhMuc) {
-        this.context=context;
+    public DanhMucAdapter(Context context, ArrayList<DanhMuc> mangDanhMuc) {
+        this.context = context;
         this.mangDanhMuc = mangDanhMuc;
     }
 
@@ -50,22 +47,22 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        View view=holder.getView();
-        TextView tvDanhMuc=view.findViewById(R.id.tvmucsanpham);
+        View view = holder.getView();
+        TextView tvDanhMuc = view.findViewById(R.id.tvmucsanpham);
         DanhMuc sanpham = mangDanhMuc.get(position);
         tvDanhMuc.setText(sanpham.getTenmuc());
-        RecyclerView recyclerView=view.findViewById(R.id.recyclerviewSanPham);
-        ArrayList<sanpham> arrayList=new ArrayList<>();
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false);
-        SanPhamAdapter sanphamadapter=new SanPhamAdapter(context,arrayList);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerviewSanPham);
+        ArrayList<SanPham> arrayList = new ArrayList<>();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
+        SanPhamAdapter sanphamadapter = new SanPhamAdapter(context, arrayList);
         recyclerView.setAdapter(sanphamadapter);
         recyclerView.setLayoutManager(linearLayoutManager);
-        getDuLieuSanPham(sanpham.getId(),arrayList,sanphamadapter);
+        getDuLieuSanPham(sanpham.getId(), arrayList, sanphamadapter);
     }
 
-    private void getDuLieuSanPham(final int idDanhMuc, final ArrayList<sanpham> arrayList, final SanPhamAdapter sanphamadapter) {
+    private void getDuLieuSanPham(final int idDanhMuc, final ArrayList<SanPham> arrayList, final SanPhamAdapter sanphamadapter) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        String duongdan=server.Duongdansanphamdanhmuc+"?idmuc="+idDanhMuc;
+        String duongdan = server.Duongdansanphamdanhmuc + "?idmuc=" + idDanhMuc;
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, duongdan, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -75,7 +72,7 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
                 String Hinhanhdt = "";
                 String Motadt = "";
                 int idspdt = 0;
-                if(response != null) {
+                if (response != null) {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject jsonObject = null;
                         try {
@@ -86,7 +83,7 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
                             Hinhanhdt = jsonObject.getString("hinhanhsanpham");
                             Motadt = jsonObject.getString("motasanpham");
                             idspdt = jsonObject.getInt("idloaisanpham");
-                            arrayList.add(new sanpham(id,Tendt,Giadt,Hinhanhdt,Motadt,idspdt));
+                            arrayList.add(new SanPham(id, Tendt, Giadt, Hinhanhdt, Motadt, idspdt));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -97,7 +94,7 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,"Error",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
             }
         });
         requestQueue.add(stringRequest);
@@ -108,14 +105,15 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
         return mangDanhMuc.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder{
+    public class ItemHolder extends RecyclerView.ViewHolder {
 
         View view;
 
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            view=itemView;
+            view = itemView;
         }
+
         public View getView() {
             return view;
         }

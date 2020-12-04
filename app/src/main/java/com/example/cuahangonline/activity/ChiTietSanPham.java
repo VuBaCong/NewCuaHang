@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.model.Giohang;
-import com.example.cuahangonline.model.sanpham;
+import com.example.cuahangonline.model.SanPham;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -54,7 +54,7 @@ public class ChiTietSanPham extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menugiohang:
                 Intent intent = new Intent(getApplicationContext(), GioHang.class);
                 startActivity(intent);
@@ -66,11 +66,11 @@ public class ChiTietSanPham extends AppCompatActivity {
         btnDatMua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.manggiohang.size() > 0){
+                if (MainActivity.manggiohang.size() > 0) {
                     int sl = Integer.parseInt(spinner.getSelectedItem().toString());
                     boolean exists = false;
-                    for (int i = 0; i < MainActivity.manggiohang.size(); i++){
-                        if (MainActivity.manggiohang.get(i).getIdsp() == id){
+                    for (int i = 0; i < MainActivity.manggiohang.size(); i++) {
+                        if (MainActivity.manggiohang.get(i).getIdsp() == id) {
                             MainActivity.manggiohang.get(i).setSoluong(MainActivity.manggiohang.get(i).getSoluong() + sl);
                             if (MainActivity.manggiohang.get(i).getSoluong() >= 10) {
                                 MainActivity.manggiohang.get(i).setSoluong(10);
@@ -79,7 +79,7 @@ public class ChiTietSanPham extends AppCompatActivity {
                             exists = true;
                         }
                     }
-                    if (exists == false){
+                    if (exists == false) {
                         int soluong = Integer.parseInt(spinner.getSelectedItem().toString());
                         long Giamoi = soluong * giaChiTiet;
                         MainActivity.manggiohang.add(new Giohang(id, tenChiTiet, Giamoi, hinhanhChiTiet, soluong));
@@ -96,13 +96,13 @@ public class ChiTietSanPham extends AppCompatActivity {
     }
 
     private void CatchEventSpinner() {
-        Integer[] soluong = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8 ,9, 10};
+        Integer[] soluong = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         ArrayAdapter<Integer> arrayAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_dropdown_item, soluong);
         spinner.setAdapter(arrayAdapter);
     }
 
     private void Getinformation() {
-        sanpham sanpham = (sanpham) getIntent().getSerializableExtra("thongtinsanpham");
+        SanPham sanpham = (SanPham) getIntent().getSerializableExtra("thongtinsanpham");
         id = sanpham.getId();
         tenChiTiet = sanpham.getTensp();
         giaChiTiet = sanpham.getGiasp();
@@ -111,7 +111,7 @@ public class ChiTietSanPham extends AppCompatActivity {
         idsanpham = sanpham.getIdloaisanpham();
         txtTen.setText(tenChiTiet);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        txtGia.setText("Giá : " + decimalFormat.format(giaChiTiet) + " Đ" );
+        txtGia.setText("Giá : " + decimalFormat.format(giaChiTiet) + " Đ");
         txtMoTa.setText(motaChitiet);
         Picasso.get().load(hinhanhChiTiet)
                 .placeholder(R.drawable.noimage)
