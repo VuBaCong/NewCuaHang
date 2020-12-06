@@ -54,13 +54,13 @@ public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHold
         RecyclerView recyclerView = view.findViewById(R.id.recyclerviewSanPham);
         ArrayList<SanPham> arrayList = new ArrayList<>();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
-        SanPhamAdapter sanphamadapter = new SanPhamAdapter(context, arrayList);
+        SanPhamChonLocAdapter sanphamadapter = new SanPhamChonLocAdapter(context, arrayList);
         recyclerView.setAdapter(sanphamadapter);
         recyclerView.setLayoutManager(linearLayoutManager);
         getDuLieuSanPham(sanpham.getId(), arrayList, sanphamadapter);
     }
 
-    private void getDuLieuSanPham(final int idDanhMuc, final ArrayList<SanPham> arrayList, final SanPhamAdapter sanphamadapter) {
+    private void getDuLieuSanPham(final int idDanhMuc, final ArrayList<SanPham> arrayList, final SanPhamChonLocAdapter sanphamadapter) {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String duongdan = server.Duongdansanphamdanhmuc + "?idmuc=" + idDanhMuc;
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, duongdan, new Response.Listener<JSONArray>() {

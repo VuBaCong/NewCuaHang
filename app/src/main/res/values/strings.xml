@@ -21,4 +21,9 @@
     <string name="upload_image_success">Cập nhật ảnh thành công.</string>
     <string name="title_change_avatar">Thay đổi ảnh đại diện.</string>
     <string name="content_change_avatar">Bạn có muốn thay đổi ảnh đại diện không?</string>
+    <string name="please_update_password">Hãy cập nhật mật khẩu mới cho tài khoản này.</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="edt_password">Mật khẩu</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_password">Xác nhận mật khẩu mới</string>
 </resources>

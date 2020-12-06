@@ -1,5 +1,7 @@
 package com.example.cuahangonline.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class SanPham implements Serializable {

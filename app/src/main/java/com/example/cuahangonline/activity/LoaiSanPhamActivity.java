@@ -23,7 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cuahangonline.CallBackSanPhamClick;
 import com.example.cuahangonline.R;
-import com.example.cuahangonline.adapter.LoaiSanPhamAdapter;
+import com.example.cuahangonline.adapter.SanPhamAdapter;
 import com.example.cuahangonline.model.SanPham;
 import com.example.cuahangonline.utils.checkconnection;
 import com.example.cuahangonline.utils.server;
@@ -38,7 +38,7 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
     private Toolbar toolbardt;
     private RecyclerView rcvSanPham;
     private ArrayList<SanPham> mangdt;
-    private LoaiSanPhamAdapter loaiSanPhamAdapter;
+    private SanPhamAdapter loaiSanPhamAdapter;
     private ProgressBar progressBar,progressBarBottom;
 
     private Boolean isLoading=true;
@@ -154,7 +154,7 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
 
     private void setupRecyclerView(){
         rcvSanPham=findViewById(R.id.rcvSanPham);
-        loaiSanPhamAdapter=new LoaiSanPhamAdapter(mangdt, new CallBackSanPhamClick() {
+        loaiSanPhamAdapter=new SanPhamAdapter(mangdt, new CallBackSanPhamClick() {
             @Override
             public void onClickItem(int position) {
                 Intent intent = new Intent(getApplicationContext(), ChiTietSanPham.class);

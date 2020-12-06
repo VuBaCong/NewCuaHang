@@ -1,5 +1,6 @@
 package com.example.cuahangonline.utils.service;
 import com.example.cuahangonline.model.KhachHang;
+import com.example.cuahangonline.model.QuangCao;
 
 import java.util.List;
 
@@ -37,5 +38,16 @@ public interface ApiInterface {
     Call<KhachHang> updateImageUser(
             @Field("username") String UserName,
             @Field("image") String Image
+    );
+
+    @GET("getlinkquangcao.php")
+    Call<List<QuangCao>> getlinkQC();
+
+    @FormUrlEncoded
+    @POST("updatepassword.php")
+    Call<KhachHang> updatepassword(
+            @Field("username") String UserName,
+            @Field("password") String PassWord,
+            @Field("newpassword") String NewPassWord
     );
 }

@@ -1,87 +1,82 @@
 package com.example.cuahangonline.adapter;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Point;
-import android.os.Build;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
+import com.example.cuahangonline.CallBackSanPhamClick;
 import com.example.cuahangonline.R;
-import com.example.cuahangonline.activity.ChiTietSanPham;
 import com.example.cuahangonline.model.SanPham;
-import com.example.cuahangonline.utils.checkconnection;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ItemHolder> {
-    Context context;
-    ArrayList<SanPham> arraysanpham;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-    public SanPhamAdapter(Context context, ArrayList<SanPham> arraysanpham) {
-        this.context = context;
-        this.arraysanpham = arraysanpham;
+public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
+    private ArrayList<SanPham> mangSanPham;
+    private CallBackSanPhamClick callBackSanPhamClick;
+
+    public SanPhamAdapter(ArrayList<SanPham> sanPhams, CallBackSanPhamClick callBackSanPhamClick){
+        this.mangSanPham=sanPhams;
+        this.callBackSanPhamClick=callBackSanPhamClick;
     }
-
     @NonNull
     @Override
-    public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.dong_sanphammoinhat, null);
-        ItemHolder itemHolder = new ItemHolder(v);
-        return itemHolder;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
+        View view=layoutInflater.inflate(R.layout.dong_dienthoai,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        SanPham sanpham = arraysanpham.get(position);
-        holder.txttensanpham.setText(sanpham.getTensp());
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        View view= holder.getView();
+        SanPham sanpham=mangSanPham.get(position);
+        TextView txttendienthoai = view.findViewById(R.id.textviewdienthoai);
+        TextView txtgiadienthoai = view.findViewById(R.id.textviewgiadienthoai);
+        TextView txtmotadienthoai = view.findViewById(R.id.textviewmotadienthoai);
+        ImageView imagedienthoai = view.findViewById(R.id.imageviewdienthoai);
+
+        txttendienthoai.setText(sanpham.getTensp());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.txtgiasanpham.setText("Giá : " + decimalFormat.format(sanpham.getGiasp()) + " Đ");
+        txtgiadienthoai.setText("Giá : " + decimalFormat.format(sanpham.getGiasp()) + " Đ");
+        txtmotadienthoai.setMaxLines(2);
+        txtmotadienthoai.setEllipsize(TextUtils.TruncateAt.END);
+        txtmotadienthoai.setText(sanpham.getMotasp());
         Picasso.get().load(sanpham.getHinhanhsp())
                 .placeholder(R.drawable.noimage)
                 .error(R.drawable.error)
-                .into(holder.imghinhanhsanpham);
+                .into(imagedienthoai);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callBackSanPhamClick.onClickItem(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return arraysanpham.size();
+        return mangSanPham.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder{
-        public ImageView imghinhanhsanpham;
-        public TextView txttensanpham, txtgiasanpham;
+    public class ViewHolder extends RecyclerView.ViewHolder {
         View view;
 
-        public ItemHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imghinhanhsanpham = (ImageView) itemView.findViewById(R.id.imageviewsanpham);
-            txttensanpham = (TextView) itemView.findViewById(R.id.textviewtensanpham);
-            txtgiasanpham = (TextView) itemView.findViewById(R.id.textviewgiasanpham);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, ChiTietSanPham.class);
-                    intent.putExtra("thongtinsanpham", arraysanpham.get(getPosition()));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
-            });
             view=itemView;
         }
+
         public View getView() {
             return view;
         }
-
     }
-
 }

@@ -17,7 +17,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -41,8 +40,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.adapter.DanhMucAdapter;
@@ -50,11 +47,11 @@ import com.example.cuahangonline.adapter.loaispadapter;
 import com.example.cuahangonline.model.DanhMuc;
 import com.example.cuahangonline.model.Giohang;
 import com.example.cuahangonline.model.KhachHang;
+import com.example.cuahangonline.model.QuangCao;
 import com.example.cuahangonline.model.loaisp;
 import com.example.cuahangonline.utils.checkconnection;
 import com.example.cuahangonline.utils.server;
 import com.google.android.material.navigation.NavigationView;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,6 +60,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private Call<KhachHang> call;
     private ImageView ivUser;
+    private ArrayList<QuangCao> mangquangcao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Anhxa();
+
         if (checkconnection.haveNetworkConnection(getApplicationContext())) {
             setupViewNavigation();
+            getDataQC();
             ActionBar();
-            ActionViewFlipper();
             Getdulieumucsanpham();
             Getdulieuloaisp();
             Catchonitemlistview();
@@ -121,6 +121,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void getDataQC(){
+        mangquangcao=new ArrayList<>();
+        Call<List<QuangCao>> call=LoginActivity.apiInterface.getlinkQC();
+        call.enqueue(new Callback<List<QuangCao>>() {
+            @Override
+            public void onResponse(Call<List<QuangCao>> call, retrofit2.Response<List<QuangCao>> response) {
+                if (response.body()==null) return;
+                mangquangcao= (ArrayList<QuangCao>) response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<QuangCao>> call, Throwable t) {
+
+            }
+        });
+    }
     private void Catchonitemlistview() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -135,6 +151,9 @@ public class MainActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
+                }else if(i == (mangloaisp.size() - 2)){
+                    Intent intent = new Intent(getApplicationContext(), DoiMatKhauActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent = new Intent(MainActivity.this, LoaiSanPhamActivity.class);
                     intent.putExtra("idloaisp", mangloaisp.get(i).getId());
@@ -198,7 +217,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-                mangloaisp.add(new loaisp(999, "Logout", "https://png.pngtree.com/png-vector/20190916/ourlarge/pngtree-info-icon-for-your-project-png-image_1731084.jpg"));
+                mangloaisp.add(new loaisp(888, "Đổi mật khẩu", "https://png.pngtree.com/png-vector/20190916/ourlarge/pngtree-info-icon-for-your-project-png-image_1731084.jpg"));
+                mangloaisp.add(new loaisp(999, "Đăng xuất", "https://png.pngtree.com/png-vector/20190916/ourlarge/pngtree-info-icon-for-your-project-png-image_1731084.jpg"));
                 loaispadapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {
@@ -211,14 +231,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ActionViewFlipper() {
-        ArrayList<String> mangquangcao = new ArrayList<>();
-        mangquangcao.add("https://pamarketing.vn/wp-content/uploads/2019/04/tai-sao-nen-day-manh-quang-cao-tren-zalo.jpg");
-        mangquangcao.add("https://pamarketing.vn/wp-content/uploads/2017/03/huong-dan-toi-uu-hinh-anh-quang-cao.jpg");
-        mangquangcao.add("https://zafago.com/uploads/news/bv56/toi-uu-facebook-ads.jpg");
-        mangquangcao.add("https://azseo.vn/wp-content/uploads/2018/12/banner-fb-ads-az1.jpg");
-        for (int i = 0; i < mangquangcao.size(); i++) {
-            ImageView imageView = new ImageView(getApplicationContext());
-            Picasso.get().load(mangquangcao.get(i)).into(imageView);
+
+        ArrayList<String> mangquangcao1 = new ArrayList<>();
+        mangquangcao1.add("https://pamarketing.vn/wp-content/uploads/2019/04/tai-sao-nen-day-manh-quang-cao-tren-zalo.jpg");
+        mangquangcao1.add("https://pamarketing.vn/wp-content/uploads/2017/03/huong-dan-toi-uu-hinh-anh-quang-cao.jpg");
+        mangquangcao1.add("https://zafago.com/uploads/news/bv56/toi-uu-facebook-ads.jpg");
+        for (int i = 0; i< mangquangcao1.size(); i++) {
+            ImageView imageView = new ImageView(this);
+
+            Glide.with(this).load(mangquangcao1.get(i)).into(imageView);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             viewFlipper.addView(imageView);
         }
