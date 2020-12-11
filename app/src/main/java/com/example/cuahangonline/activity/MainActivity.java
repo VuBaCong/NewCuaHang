@@ -47,7 +47,6 @@ import com.example.cuahangonline.adapter.loaispadapter;
 import com.example.cuahangonline.model.DanhMuc;
 import com.example.cuahangonline.model.Giohang;
 import com.example.cuahangonline.model.KhachHang;
-import com.example.cuahangonline.model.QuangCao;
 import com.example.cuahangonline.model.loaisp;
 import com.example.cuahangonline.utils.checkconnection;
 import com.example.cuahangonline.utils.server;
@@ -60,7 +59,6 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -83,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private Call<KhachHang> call;
     private ImageView ivUser;
-    private ArrayList<QuangCao> mangquangcao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (checkconnection.haveNetworkConnection(getApplicationContext())) {
             setupViewNavigation();
-            //getDataQC();
             ActionViewFlipper();
             ActionBar();
             Getdulieumucsanpham();
@@ -122,22 +119,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    private void getDataQC(){
-//        mangquangcao=new ArrayList<>();
-//        Call<List<QuangCao>> call=LoginActivity.apiInterface.getlinkQC();
-//        call.enqueue(new Callback<List<QuangCao>>() {
-//            @Override
-//            public void onResponse(Call<List<QuangCao>> call, retrofit2.Response<List<QuangCao>> response) {
-//                if (response.body()==null) return;
-//                mangquangcao= (ArrayList<QuangCao>) response.body();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<QuangCao>> call, Throwable t) {
-//
-//            }
-//        });
-//    }
     private void Catchonitemlistview() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.cuahangonline.CallBackSanPhamClick;
+import com.example.cuahangonline.callback.CallBackSanPhamClick;
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.model.SanPham;
 import com.squareup.picasso.Picasso;

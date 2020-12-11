@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.adapter.GioHangAdapter;
+import com.example.cuahangonline.callback.CallBackGioHangLongClick;
 import com.example.cuahangonline.utils.checkconnection;
 
 import java.text.DecimalFormat;
@@ -35,7 +36,7 @@ public class GioHang extends AppCompatActivity {
         ActionToolbar();
         CheckData();
         EventUtil();
-        CatchOnItemLv();
+
         EventButton();
     }
 
@@ -140,7 +141,45 @@ public class GioHang extends AppCompatActivity {
         btnThanhToan = findViewById(R.id.buttonthanhtoangiohang);
         btnTiepTucMua = findViewById(R.id.buttontieptucmuahang);
         toolbarGioHang = findViewById(R.id.toolbargiohang);
-        gioHangAdapter = new GioHangAdapter(GioHang.this, MainActivity.manggiohang);
+        gioHangAdapter = new GioHangAdapter(GioHang.this, MainActivity.manggiohang, new CallBackGioHangLongClick() {
+            @Override
+            public void onLongClick(int position) {
+                xoaGioHang(position);
+            }
+        });
         lvGioHang.setAdapter(gioHangAdapter);
+    }
+
+    private void xoaGioHang(final int position){
+        AlertDialog.Builder builder = new AlertDialog.Builder(GioHang.this);
+        builder.setTitle("Xác nhận xóa sản phẩm");
+        builder.setMessage("Bạn có chắc muốn xóa sản phẩm này");
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (MainActivity.manggiohang.size() <= 0) {
+                    txtThongBao.setVisibility(View.VISIBLE);
+                } else {
+                    MainActivity.manggiohang.remove(position);
+                    gioHangAdapter.notifyDataSetChanged();
+                    EventUtil();
+                    if (MainActivity.manggiohang.size() <= 0) {
+                        txtThongBao.setVisibility(View.VISIBLE);
+                    } else {
+                        txtThongBao.setVisibility(View.INVISIBLE);
+                        gioHangAdapter.notifyDataSetChanged();
+                        EventUtil();
+                    }
+                }
+            }
+        });
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                gioHangAdapter.notifyDataSetChanged();
+                EventUtil();
+            }
+        });
+        builder.show();
     }
 }

@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.cuahangonline.R;
 
-public class LienheActivity extends AppCompatActivity {
+public class TimKiemThongTin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lienhe);
+        setContentView(R.layout.activity_tim_kiem_thong_tin);
     }
 }

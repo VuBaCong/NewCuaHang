@@ -3,7 +3,6 @@ package com.example.cuahangonline.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +11,6 @@ import android.widget.Toast;
 
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.model.KhachHang;
-import com.example.cuahangonline.model.QuangCao;
-import com.example.cuahangonline.utils.data.PrefConfig;
 
 import java.util.ArrayList;
 

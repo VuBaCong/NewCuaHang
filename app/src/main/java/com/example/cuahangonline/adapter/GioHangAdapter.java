@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.cuahangonline.R;
 import com.example.cuahangonline.activity.GioHang;
 import com.example.cuahangonline.activity.MainActivity;
+import com.example.cuahangonline.callback.CallBackGioHangLongClick;
 import com.example.cuahangonline.model.Giohang;
 import com.squareup.picasso.Picasso;
 
@@ -22,10 +23,12 @@ import java.util.ArrayList;
 public class GioHangAdapter extends BaseAdapter {
     Context context;
     ArrayList<Giohang> arrayGioHang;
+    private CallBackGioHangLongClick callback;
 
-    public GioHangAdapter(Context context, ArrayList<Giohang> arrayGioHang) {
+    public GioHangAdapter(Context context, ArrayList<Giohang> arrayGioHang,CallBackGioHangLongClick callback) {
         this.context = context;
         this.arrayGioHang = arrayGioHang;
+        this.callback=callback;
     }
 
     @Override
@@ -129,6 +132,13 @@ public class GioHangAdapter extends BaseAdapter {
                     finalViewHolder.btnMinus.setVisibility(View.VISIBLE);
                     finalViewHolder.btnValues.setText(String.valueOf(slmoinhat));
                 }
+            }
+        });
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                callback.onLongClick(position);
+                return false;
             }
         });
         return view;

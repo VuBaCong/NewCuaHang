@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ThongTinKhachHang extends AppCompatActivity {
-    EditText edtTenkh, edtSdt, edtEmail;
+    EditText edtTenkh, edtSdt, edtDiaChi;
     Button btnXacnhan, btnTrove;
 
     @Override
@@ -55,8 +55,8 @@ public class ThongTinKhachHang extends AppCompatActivity {
             public void onClick(View v) {
                 final String ten = edtTenkh.getText().toString().trim();
                 final String sdt = edtSdt.getText().toString().trim();
-                final String email = edtEmail.getText().toString().trim();
-                if (ten.length()>0 && sdt.length() >0 && email.length() >0) {
+                final String diachi = edtDiaChi.getText().toString().trim();
+                if (ten.length()>0 && sdt.length() >0 && diachi.length() >0) {
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, server.Duongandonhang, new Response.Listener<String>() {
                         @Override
@@ -117,7 +117,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
                             HashMap<String, String> hashMap = new HashMap<String, String>();
                             hashMap.put("tenkhachhang", ten);
                             hashMap.put("sodienthoai", sdt);
-                            hashMap.put("email", email);
+                            hashMap.put("diachi", diachi);
                             return hashMap;
                         }
                     };
@@ -132,7 +132,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
     private void Anhxa() {
         edtTenkh = (EditText) findViewById(R.id.edittexttenkhachhang);
         edtSdt = (EditText) findViewById(R.id.edittextsodienthoai);
-        edtEmail = (EditText) findViewById(R.id.edittextemail);
+        edtDiaChi = (EditText) findViewById(R.id.edittextdiachi);
         btnXacnhan = (Button) findViewById(R.id.buttonxacnhan);
         btnTrove = (Button) findViewById(R.id.buttontrove);
     }

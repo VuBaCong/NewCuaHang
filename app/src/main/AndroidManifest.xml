@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DonHang"></activity>
+        <activity android:name=".activity.TimKiemThongTin"></activity>
+        <activity android:name=".activity.DonHang" />
         <activity android:name=".activity.ChiTietLichSuMuaHang" />
         <activity android:name=".activity.LichSuMuaHang" />
         <activity android:name=".activity.DoiMatKhauActivity" />
@@ -26,8 +27,6 @@
         <activity android:name=".activity.ThongTinKhachHang" />
         <activity android:name=".activity.GioHang" />
         <activity android:name=".activity.ChiTietSanPham" />
-        <activity android:name=".activity.ThongtinActivity" />
-        <activity android:name=".activity.LienheActivity" />
         <activity android:name=".activity.LoaiSanPhamActivity" />
         <activity android:name=".activity.MainActivity" />
     </application>
