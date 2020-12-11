@@ -22,22 +22,23 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     private ArrayList<SanPham> mangSanPham;
     private CallBackSanPhamClick callBackSanPhamClick;
 
-    public SanPhamAdapter(ArrayList<SanPham> sanPhams, CallBackSanPhamClick callBackSanPhamClick){
-        this.mangSanPham=sanPhams;
-        this.callBackSanPhamClick=callBackSanPhamClick;
+    public SanPhamAdapter(ArrayList<SanPham> sanPhams, CallBackSanPhamClick callBackSanPhamClick) {
+        this.mangSanPham = sanPhams;
+        this.callBackSanPhamClick = callBackSanPhamClick;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater= LayoutInflater.from(parent.getContext());
-        View view=layoutInflater.inflate(R.layout.dong_dienthoai,parent,false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.dong_dienthoai, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        View view= holder.getView();
-        SanPham sanpham=mangSanPham.get(position);
+        View view = holder.getView();
+        SanPham sanpham = mangSanPham.get(position);
         TextView txttendienthoai = view.findViewById(R.id.textviewdienthoai);
         TextView txtgiadienthoai = view.findViewById(R.id.textviewgiadienthoai);
         TextView txtmotadienthoai = view.findViewById(R.id.textviewmotadienthoai);
@@ -72,7 +73,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            view=itemView;
+            view = itemView;
         }
 
         public View getView() {

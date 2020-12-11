@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="10"
-    android:layout_height="match_parent">
+    android:weightSum="10">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbChangePassword"
@@ -18,69 +17,73 @@
         app:titleTextColor="@android:color/black" />
 
     <TextView
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:background="#EDECEC"
-        android:textSize="16sp"
         android:layout_height="wrap_content"
-        android:text="@string/please_update_password"/>
+        android:background="#EDECEC"
+        android:gravity="center"
+        android:text="@string/please_update_password"
+        android:textSize="16sp" />
+
     <View
         android:layout_width="match_parent"
-        android:background="#EDECEC"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="#EDECEC" />
+
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="@string/edt_password"
         android:background="@android:color/transparent"
-        android:padding="9dp"
-        />
+        android:hint="@string/edt_password"
+        android:padding="9dp" />
+
     <View
         android:layout_width="match_parent"
-        android:background="#EDECEC"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="#EDECEC" />
+
     <EditText
         android:id="@+id/edtNewPassword"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:inputType="textPassword"
-        android:hint="@string/new_password"
         android:background="@android:color/transparent"
-        android:padding="9dp"
-        />
+        android:hint="@string/new_password"
+        android:inputType="textPassword"
+        android:padding="9dp" />
+
     <View
         android:layout_width="match_parent"
-        android:background="#E4E4E4"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:background="#E4E4E4" />
+
     <EditText
         android:id="@+id/edtConfirmPassword"
         android:layout_width="match_parent"
-        android:inputType="textPassword"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="@string/confirm_password"
         android:background="@android:color/transparent"
-        android:padding="9dp"
-        />
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="9dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
         android:background="#EDECEC"
-        android:orientation="vertical"
-        android:gravity="center|top">
+        android:gravity="center|top"
+        android:orientation="vertical">
+
         <Button
             android:id="@+id/btnUpdatePassword"
-            android:layout_margin="15dp"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
+            android:layout_margin="15dp"
             android:background="@drawable/btn_custom"
-            android:text="Cập nhật"/>
+            android:text="Cập nhật"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
 

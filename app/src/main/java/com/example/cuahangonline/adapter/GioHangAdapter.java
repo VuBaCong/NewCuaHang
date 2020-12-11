@@ -25,10 +25,10 @@ public class GioHangAdapter extends BaseAdapter {
     ArrayList<Giohang> arrayGioHang;
     private CallBackGioHangLongClick callback;
 
-    public GioHangAdapter(Context context, ArrayList<Giohang> arrayGioHang,CallBackGioHangLongClick callback) {
+    public GioHangAdapter(Context context, ArrayList<Giohang> arrayGioHang, CallBackGioHangLongClick callback) {
         this.context = context;
         this.arrayGioHang = arrayGioHang;
-        this.callback=callback;
+        this.callback = callback;
     }
 
     @Override
@@ -46,11 +46,12 @@ public class GioHangAdapter extends BaseAdapter {
         return position;
     }
 
-    public class ViewHolder{
+    public class ViewHolder {
         public TextView txtTenGioHang, txtGiaGioHang;
         public ImageView imgGioHang;
         public Button btnMinus, btnValues, btnPlus;
     }
+
     @Override
     public View getView(final int position, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
@@ -77,13 +78,13 @@ public class GioHangAdapter extends BaseAdapter {
                 .error(R.drawable.error)
                 .into(viewHolder.imgGioHang);
         viewHolder.btnValues.setText(giohang.getSoluong() + "");
-        int sl =  Integer.parseInt(viewHolder.btnValues.getText().toString());
-        if (sl >= 10){
+        int sl = Integer.parseInt(viewHolder.btnValues.getText().toString());
+        if (sl >= 10) {
             viewHolder.btnMinus.setVisibility(View.VISIBLE);
             viewHolder.btnPlus.setVisibility(View.INVISIBLE);
-        } else if (sl <= 1){
+        } else if (sl <= 1) {
             viewHolder.btnMinus.setVisibility(View.INVISIBLE);
-        } else if (sl >= 1){
+        } else if (sl >= 1) {
             viewHolder.btnPlus.setVisibility(View.VISIBLE);
             viewHolder.btnMinus.setVisibility(View.VISIBLE);
         }

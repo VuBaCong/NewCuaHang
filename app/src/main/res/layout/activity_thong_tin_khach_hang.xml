@@ -4,91 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".activity.ThongTinKhachHang">
+
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
-        android:background="@drawable/boder2"
-        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="80dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:background="@drawable/boder2"
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:textStyle="bold"
+            android:text="Thông tin người mua hàng"
             android:textColor="#252120"
             android:textSize="30sp"
-            android:text="Thông tin người mua hàng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textStyle="bold" />
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="35dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
+
             <EditText
-                android:layout_margin="5dp"
                 android:id="@+id/edittexttenkhachhang"
-                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:hint="Nhập tên của khách hàng"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
             <EditText
-                android:layout_margin="5dp"
                 android:id="@+id/edittextdiachi"
-                android:inputType="text"
-                android:hint="Nhập địa chỉ"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:id="@+id/edittextsodienthoai"
-                android:inputType="phone"
-                android:hint="Nhập số điện thoai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:hint="Nhập địa chỉ"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
-        <LinearLayout
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/edittextsodienthoai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:hint="Nhập số điện thoai"
+                android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <Button
-                android:layout_marginRight="70dp"
-                android:background="@drawable/button"
-                android:textColor="#151414"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:text="Xác nhận"
                 android:id="@+id/buttonxacnhan"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <Button
+                android:layout_height="wrap_content"
+                android:layout_marginRight="70dp"
                 android:background="@drawable/button"
-                android:textColor="#151414"
-                android:textSize="15sp"
                 android:padding="10dp"
-                android:text="Trở về"
+                android:text="Xác nhận"
+                android:textColor="#151414"
+                android:textSize="15sp" />
+
+            <Button
                 android:id="@+id/buttontrove"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/button"
+                android:padding="10dp"
+                android:text="Trở về"
+                android:textColor="#151414"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

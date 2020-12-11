@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -47,6 +48,7 @@ import com.example.cuahangonline.adapter.loaispadapter;
 import com.example.cuahangonline.model.DanhMuc;
 import com.example.cuahangonline.model.Giohang;
 import com.example.cuahangonline.model.KhachHang;
+import com.example.cuahangonline.model.SanPham;
 import com.example.cuahangonline.model.loaisp;
 import com.example.cuahangonline.utils.checkconnection;
 import com.example.cuahangonline.utils.server;
@@ -115,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menugiohang:
                 Intent intent = new Intent(getApplicationContext(), GioHang.class);
                 startActivity(intent);
+            case R.id.search:
+                Intent intent1 = new Intent(getApplicationContext(), SanPham.class);
+                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -133,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
-                }else if(i == (mangloaisp.size() - 2)){
+                } else if (i == (mangloaisp.size() - 2)) {
                     Intent intent = new Intent(getApplicationContext(), DoiMatKhauActivity.class);
                     startActivity(intent);
                 } else {
@@ -145,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void Getdulieumucsanpham() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -220,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
         mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/44/221251/Feature/ft-acer-thang-12.jpg");
         mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/522/228144/Feature/samsung-galaxy-tab-a7-2020-fix-4.jpg");
         mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/522/228809/Feature/ipad-8-wifi-32gb-2020-ft-fix.jpg");
-        for (int i = 0; i< mangquangcao1.size(); i++) {
+        for (int i = 0; i < mangquangcao1.size(); i++) {
             ImageView imageView = new ImageView(this);
 
             Glide.with(this).load(mangquangcao1.get(i)).into(imageView);
@@ -251,10 +255,10 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView) findViewById(R.id.navigationview);
         View viewNav = navigationView.getHeaderView(0);
 
-        TextView tvUser=viewNav.findViewById(R.id.tvUser);
+        TextView tvUser = viewNav.findViewById(R.id.tvUser);
         tvUser.setText(LoginActivity.prefConfig.readUserName());
-        ivUser=viewNav.findViewById(R.id.ivUser);
-        String urlImage=LoginActivity.prefConfig.readLinkImage();
+        ivUser = viewNav.findViewById(R.id.ivUser);
+        String urlImage = LoginActivity.prefConfig.readLinkImage();
         Glide.with(getApplicationContext()).load(urlImage).signature(new ObjectKey(String.valueOf(System.currentTimeMillis()))).into(ivUser);
         ivUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -269,8 +273,9 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(loaispadapter);
 
     }
-    private void showDialog(){
-        final AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+    private void showDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.title_change_avatar));
         builder.setMessage(getResources().getString(R.string.content_change_avatar));
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
@@ -286,25 +291,26 @@ public class MainActivity extends AppCompatActivity {
                 dialogInterface.dismiss();
             }
         });
-        Dialog dialog=builder.create();
+        Dialog dialog = builder.create();
         dialog.show();
     }
 
-    private void openImageResoure(){
-        Intent intent=new Intent();
+    private void openImageResoure() {
+        Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,REQUEST_CODE);
+        startActivityForResult(intent, REQUEST_CODE);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode==REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             Uri uri = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                if (checkconnection.haveNetworkConnection(getApplicationContext())){
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                if (checkconnection.haveNetworkConnection(getApplicationContext())) {
                     updateImageToServer();
-                }else {
+                } else {
                     LoginActivity.prefConfig.displayToast(getString(R.string.no_network));
                 }
 
@@ -315,31 +321,31 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private String convertImageToString(){
-        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,20,byteArrayOutputStream);
-        byte[] imgByte= byteArrayOutputStream.toByteArray();
-        return Base64.encodeToString(imgByte,Base64.DEFAULT);
+    private String convertImageToString() {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream);
+        byte[] imgByte = byteArrayOutputStream.toByteArray();
+        return Base64.encodeToString(imgByte, Base64.DEFAULT);
     }
 
-    private void updateImageToServer(){
-        final ProgressDialog progressDialog=new ProgressDialog(this);
+    private void updateImageToServer() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Đang tải ảnh...");
         progressDialog.show();
-        String image= convertImageToString();
-        String username=LoginActivity.prefConfig.readUserName();
-        call= LoginActivity.apiInterface.updateImageUser(username,image);
+        String image = convertImageToString();
+        String username = LoginActivity.prefConfig.readUserName();
+        call = LoginActivity.apiInterface.updateImageUser(username, image);
         call.enqueue(new Callback<KhachHang>() {
 
             @Override
             public void onResponse(Call<KhachHang> call, retrofit2.Response<KhachHang> response) {
                 progressDialog.dismiss();
-                KhachHang user=response.body();
-                if (!response.isSuccessful()){
+                KhachHang user = response.body();
+                if (!response.isSuccessful()) {
                     return;
                 }
-                if (user==null) return;
-                if (user.getResponse().equals("ok")){
+                if (user == null) return;
+                if (user.getResponse().equals("ok")) {
                     LoginActivity.prefConfig.displayToast(getResources().getString(R.string.upload_image_success));
                     ivUser.setImageBitmap(bitmap);
                 }
@@ -349,9 +355,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<KhachHang> call, Throwable t) {
                 progressDialog.dismiss();
-                if (call.isCanceled()){
-                    Log.d("BBB","is cancle");
-                }else {
+                if (call.isCanceled()) {
+                    Log.d("BBB", "is cancle");
+                } else {
                     LoginActivity.prefConfig.displayToast(getResources().getString(R.string.register_error));
                 }
 

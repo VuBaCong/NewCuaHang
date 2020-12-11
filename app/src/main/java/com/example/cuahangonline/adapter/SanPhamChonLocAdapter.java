@@ -53,7 +53,7 @@ public class SanPhamChonLocAdapter extends RecyclerView.Adapter<SanPhamChonLocAd
         return arraysanpham.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder{
+    public class ItemHolder extends RecyclerView.ViewHolder {
         public ImageView imghinhanhsanpham;
         public TextView txttensanpham, txtgiasanpham;
         View view;
@@ -72,8 +72,9 @@ public class SanPhamChonLocAdapter extends RecyclerView.Adapter<SanPhamChonLocAd
                     context.startActivity(intent);
                 }
             });
-            view=itemView;
+            view = itemView;
         }
+
         public View getView() {
             return view;
         }

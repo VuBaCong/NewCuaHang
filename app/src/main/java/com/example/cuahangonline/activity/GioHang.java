@@ -28,6 +28,7 @@ public class GioHang extends AppCompatActivity {
     Button btnThanhToan, btnTiepTucMua;
     Toolbar toolbarGioHang;
     GioHangAdapter gioHangAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,6 @@ public class GioHang extends AppCompatActivity {
         ActionToolbar();
         CheckData();
         EventUtil();
-
         EventButton();
     }
 
@@ -52,7 +52,7 @@ public class GioHang extends AppCompatActivity {
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (MainActivity.manggiohang.size() > 0){
+                if (MainActivity.manggiohang.size() > 0) {
                     Intent intent = new Intent(getApplicationContext(), ThongTinKhachHang.class);
                     startActivity(intent);
                 } else {
@@ -103,7 +103,7 @@ public class GioHang extends AppCompatActivity {
 
     public static void EventUtil() {
         long tongtien = 0;
-        for (int i = 0; i < MainActivity.manggiohang.size(); i ++){
+        for (int i = 0; i < MainActivity.manggiohang.size(); i++) {
             tongtien += MainActivity.manggiohang.get(i).getGiasp();
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
@@ -111,7 +111,7 @@ public class GioHang extends AppCompatActivity {
     }
 
     private void CheckData() {
-        if (MainActivity.manggiohang.size() <= 0 ){
+        if (MainActivity.manggiohang.size() <= 0) {
             gioHangAdapter.notifyDataSetChanged();
             txtThongBao.setVisibility(View.VISIBLE);
             lvGioHang.setVisibility(View.INVISIBLE);
@@ -150,7 +150,7 @@ public class GioHang extends AppCompatActivity {
         lvGioHang.setAdapter(gioHangAdapter);
     }
 
-    private void xoaGioHang(final int position){
+    private void xoaGioHang(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(GioHang.this);
         builder.setTitle("Xác nhận xóa sản phẩm");
         builder.setMessage("Bạn có chắc muốn xóa sản phẩm này");

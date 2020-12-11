@@ -39,14 +39,14 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
     private RecyclerView rcvSanPham;
     private ArrayList<SanPham> mangdt;
     private SanPhamAdapter loaiSanPhamAdapter;
-    private ProgressBar progressBar,progressBarBottom;
-
-    private Boolean isLoading=true;
+    private ProgressBar progressBar, progressBarBottom;
+    private Boolean isLoading = true;
     private int page = 0;
-    private int pastVisbleItems,totallItemCount;
-    private int view_threashold =15;
-    private int previous_total=0;
+    private int pastVisbleItems, totallItemCount;
+    private int view_threashold = 15;
+    private int previous_total = 0;
     private LinearLayoutManager linearLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +65,7 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
     }
 
     private void setTitle() {
-        String tenloaisp=getIntent().getStringExtra("tenloaisp");
+        String tenloaisp = getIntent().getStringExtra("tenloaisp");
         toolbardt.setTitle(tenloaisp);
     }
 
@@ -86,9 +86,9 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
     }
 
     private void getData(int Page) {
-        int idloaisanpham=getIntent().getIntExtra("idloaisp",-1);
+        int idloaisanpham = getIntent().getIntExtra("idloaisp", -1);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String duongdan = server.Duongdandienthoai + String.valueOf(Page) + "&idloaisanpham="+idloaisanpham;
+        String duongdan = server.Duongdandienthoai + String.valueOf(Page) + "&idloaisanpham=" + idloaisanpham;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, duongdan, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -147,14 +147,14 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
     private void Anhxa() {
         mangdt = new ArrayList<>();
         toolbardt = (Toolbar) findViewById(R.id.toolbardienthoai);
-        progressBar=findViewById(R.id.progressbar);
-        progressBarBottom=findViewById(R.id.progressBarBottom);
+        progressBar = findViewById(R.id.progressbar);
+        progressBarBottom = findViewById(R.id.progressBarBottom);
 
     }
 
-    private void setupRecyclerView(){
-        rcvSanPham=findViewById(R.id.rcvSanPham);
-        loaiSanPhamAdapter=new SanPhamAdapter(mangdt, new CallBackSanPhamClick() {
+    private void setupRecyclerView() {
+        rcvSanPham = findViewById(R.id.rcvSanPham);
+        loaiSanPhamAdapter = new SanPhamAdapter(mangdt, new CallBackSanPhamClick() {
             @Override
             public void onClickItem(int position) {
                 Intent intent = new Intent(getApplicationContext(), ChiTietSanPham.class);
@@ -162,28 +162,28 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        linearLayoutManager=new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         rcvSanPham.setLayoutManager(linearLayoutManager);
         rcvSanPham.setAdapter(loaiSanPhamAdapter);
     }
 
-    private void loadMoreData(){
+    private void loadMoreData() {
         rcvSanPham.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                totallItemCount=linearLayoutManager.getItemCount();
-                pastVisbleItems=linearLayoutManager.findFirstVisibleItemPosition();
-                if (dy>0){
-                    if (isLoading){
-                        if (totallItemCount>previous_total){
-                            isLoading=false;
-                            previous_total=totallItemCount;
+                totallItemCount = linearLayoutManager.getItemCount();
+                pastVisbleItems = linearLayoutManager.findFirstVisibleItemPosition();
+                if (dy > 0) {
+                    if (isLoading) {
+                        if (totallItemCount > previous_total) {
+                            isLoading = false;
+                            previous_total = totallItemCount;
                         }
 
                     }
-                    if (!isLoading && (totallItemCount<=(pastVisbleItems+ view_threashold))){
-                        isLoading=true;
+                    if (!isLoading && (totallItemCount <= (pastVisbleItems + view_threashold))) {
+                        isLoading = true;
                         progressBarBottom.setVisibility(View.VISIBLE);
                         page++;
                         getData(page);

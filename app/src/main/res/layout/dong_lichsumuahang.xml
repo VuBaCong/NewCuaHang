@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:weightSum="10"
+    android:layout_height="120dp"
     android:layout_margin="5dp"
-    android:layout_height="120dp">
+    android:orientation="horizontal"
+    android:weightSum="10">
+
     <LinearLayout
-        android:layout_weight="3"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="3"
         android:orientation="vertical">
+
         <ImageView
             android:id="@+id/imageviewdienthoai"
-            android:scaleType="fitCenter"
-            android:padding="5dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ic_launcher" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="7"
-        android:weightSum="10"
+        android:orientation="vertical"
         android:padding="3dp"
-        android:layout_height="match_parent">
+        android:weightSum="10">
+
         <TextView
             android:id="@+id/textviewdienthoai"
-            android:textColor="#002AFF"
-            android:text="Tên sản phẩm"
-            android:gravity="center_vertical"
-            android:textSize="18sp"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="4"
-            android:layout_height="0dp"/>
-        <TextView
-            android:textSize="16sp"
-            android:text="Giá sản phẩm"
-            android:textColor="#f20"
             android:gravity="center_vertical"
+            android:text="Tên sản phẩm"
+            android:textColor="#002AFF"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/textviewgiadienthoai"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="Giá sản phẩm"
+            android:textColor="#f20"
+            android:textSize="16sp" />
+
         <TextView
-            android:text="Ngày mua"
-            android:textSize="15sp"
             android:id="@+id/textviewngaymuahang"
             android:layout_width="match_parent"
-            android:textColor="@color/colorBlack"
+            android:layout_height="0dp"
             android:layout_weight="4"
             android:gravity="center_vertical"
-            android:layout_height="0dp"/>
+            android:text="Ngày mua"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>

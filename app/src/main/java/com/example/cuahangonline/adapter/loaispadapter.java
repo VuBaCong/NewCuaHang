@@ -38,7 +38,7 @@ public class loaispadapter extends BaseAdapter {
         return i;
     }
 
-    public class ViewHolder{
+    public class ViewHolder {
         TextView txttenloaisp;
         ImageView imgloaisp;
     }
@@ -46,14 +46,14 @@ public class loaispadapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
-        if(view == null){
+        if (view == null) {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.dong_listview_loaisp, null);
             viewHolder.txttenloaisp = (TextView) view.findViewById(R.id.textviewloaisp);
             viewHolder.imgloaisp = (ImageView) view.findViewById(R.id.imageviewloaisp);
             view.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) view.getTag();
         }
         loaisp loaisp = (loaisp) getItem(i);

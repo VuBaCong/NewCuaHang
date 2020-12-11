@@ -4,23 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.TimKiemThongTin"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".activity.TimKiemThongTin">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
         <EditText
-            android:layout_margin="5dp"
-            android:textAlignment="center"
-            android:background="@drawable/boder3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="9"
+            android:background="@drawable/boder3"
             android:text="Nhập thông tin cần tìm"
+            android:textAlignment="center"
             android:textColor="@color/colorBlack"
             android:textSize="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerviewSanPham"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 </LinearLayout>

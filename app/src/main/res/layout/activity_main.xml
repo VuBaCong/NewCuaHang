@@ -5,63 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawverlayout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="vertical"
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawverlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.appcompat.widget.Toolbar
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:id="@+id/toolbarmanhinhchinh"
-            android:background="@drawable/boder3"
-            app:title="Trang Chính"
-            android:elevation="2dp"
-            app:titleTextColor="@android:color/black"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-        </androidx.appcompat.widget.Toolbar>
-        <ScrollView
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarmanhinhchinh"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/boder3"
+                android:elevation="2dp"
+                app:title="Trang Chính"
+                app:titleTextColor="@android:color/black"></androidx.appcompat.widget.Toolbar>
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                <ViewFlipper
-                    android:id="@+id/viewflipper"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="180dp">
-                </ViewFlipper>
-                <ProgressBar
-                    android:id="@+id/progressbarDanhMuc"
-                    android:layout_marginTop="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:background="#FFFFFF"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:id="@+id/recyclerviewDanhMuc"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
-        </ScrollView>
+                    <ViewFlipper
+                        android:id="@+id/viewflipper"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"></ViewFlipper>
 
-    </LinearLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationview"
-        android:layout_gravity="start"
-        android:layout_width="match_parent"
-        app:headerLayout="@layout/header_layout"
-        android:layout_height="match_parent">
+                    <ProgressBar
+                        android:id="@+id/progressbarDanhMuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp" />
 
-    </com.google.android.material.navigation.NavigationView>
-</androidx.drawerlayout.widget.DrawerLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewDanhMuc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:background="#FFFFFF" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header_layout">
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>
