@@ -11,7 +11,7 @@
         app:title="Giỏ Hàng"
         android:background="@color/colorToolbar"
         android:id="@+id/toolbargiohang"
-        app:titleTextColor="@android:color/white"
+        app:titleTextColor="@android:color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </androidx.appcompat.widget.Toolbar>
@@ -56,7 +56,7 @@
                 android:layout_height="match_parent">
                 <TextView
                     android:textSize="26sp"
-                    android:textColor="@color/colorToolbar"
+                    android:textColor="@color/colorBlack"
                     android:text="Tổng tiền : "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -69,7 +69,7 @@
                 <TextView
                     android:id="@+id/textviewtongtien"
                     android:textSize="26sp"
-                    android:textColor="@color/colorToolbar"
+                    android:textColor="@color/colorGiaTri"
                     android:text="Giá trị"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

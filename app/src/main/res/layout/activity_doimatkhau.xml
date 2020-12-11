@@ -15,7 +15,7 @@
         android:background="@color/colorToolbar"
         android:elevation="4dp"
         app:title="@string/change_password"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@android:color/black" />
 
     <TextView
         android:gravity="center"
@@ -78,7 +78,7 @@
             android:layout_margin="15dp"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:background="@drawable/btn_custom"
             android:text="Cập nhật"/>
     </LinearLayout>

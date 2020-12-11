@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:background="@drawable/boder2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -31,7 +32,7 @@
 
                 <LinearLayout
                     android:layout_weight="3"
-                    android:background="#DFDFDF"
+                    android:background="@drawable/boder2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:weightSum="5"
@@ -44,7 +45,7 @@
                         android:gravity="center"
                         android:layout_weight="3"
                         android:text="Tên sản phẩm"
-                        android:textColor="#101010"
+                        android:textColor="#002AFF"
                         android:textSize="10sp" />
 
                     <TextView

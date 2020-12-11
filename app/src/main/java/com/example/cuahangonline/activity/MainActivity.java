@@ -94,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (checkconnection.haveNetworkConnection(getApplicationContext())) {
             setupViewNavigation();
-            getDataQC();
+            //getDataQC();
+            ActionViewFlipper();
             ActionBar();
             Getdulieumucsanpham();
             Getdulieuloaisp();
@@ -121,22 +122,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getDataQC(){
-        mangquangcao=new ArrayList<>();
-        Call<List<QuangCao>> call=LoginActivity.apiInterface.getlinkQC();
-        call.enqueue(new Callback<List<QuangCao>>() {
-            @Override
-            public void onResponse(Call<List<QuangCao>> call, retrofit2.Response<List<QuangCao>> response) {
-                if (response.body()==null) return;
-                mangquangcao= (ArrayList<QuangCao>) response.body();
-            }
-
-            @Override
-            public void onFailure(Call<List<QuangCao>> call, Throwable t) {
-
-            }
-        });
-    }
+//    private void getDataQC(){
+//        mangquangcao=new ArrayList<>();
+//        Call<List<QuangCao>> call=LoginActivity.apiInterface.getlinkQC();
+//        call.enqueue(new Callback<List<QuangCao>>() {
+//            @Override
+//            public void onResponse(Call<List<QuangCao>> call, retrofit2.Response<List<QuangCao>> response) {
+//                if (response.body()==null) return;
+//                mangquangcao= (ArrayList<QuangCao>) response.body();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<QuangCao>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
     private void Catchonitemlistview() {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -231,11 +232,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void ActionViewFlipper() {
-
         ArrayList<String> mangquangcao1 = new ArrayList<>();
-        mangquangcao1.add("https://pamarketing.vn/wp-content/uploads/2019/04/tai-sao-nen-day-manh-quang-cao-tren-zalo.jpg");
-        mangquangcao1.add("https://pamarketing.vn/wp-content/uploads/2017/03/huong-dan-toi-uu-hinh-anh-quang-cao.jpg");
-        mangquangcao1.add("https://zafago.com/uploads/news/bv56/toi-uu-facebook-ads.jpg");
+        mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/42/222596/Feature/oppo-reno4-720x333-3.jpg");
+        mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/42/220522/Feature/samsung-galaxy-note-20-ultra-spec-fixed-720x333-720x333.jpg");
+        mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/44/223534/Feature/ft-lenovo-thang-12.jpg");
+        mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/44/221251/Feature/ft-acer-thang-12.jpg");
+        mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/522/228144/Feature/samsung-galaxy-tab-a7-2020-fix-4.jpg");
+        mangquangcao1.add("https://cdn.tgdd.vn/Products/Images/522/228809/Feature/ipad-8-wifi-32gb-2020-ft-fix.jpg");
         for (int i = 0; i< mangquangcao1.size(); i++) {
             ImageView imageView = new ImageView(this);
 
