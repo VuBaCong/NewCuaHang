@@ -117,9 +117,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menugiohang:
                 Intent intent = new Intent(getApplicationContext(), GioHang.class);
                 startActivity(intent);
-            case R.id.search:
-                Intent intent1 = new Intent(getApplicationContext(), SanPham.class);
-                startActivity(intent1);
         }
         return super.onOptionsItemSelected(item);
     }

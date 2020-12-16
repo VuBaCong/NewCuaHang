@@ -2,6 +2,7 @@ package com.example.cuahangonline.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.cuahangonline.R;
+import com.example.cuahangonline.fragment.LoginFragment;
 import com.example.cuahangonline.utils.checkconnection;
 import com.example.cuahangonline.utils.server;
 
@@ -24,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,22 +45,28 @@ public class ThongTinKhachHang extends AppCompatActivity {
                 finish();
             }
         });
-        if (checkconnection.haveNetworkConnection(getApplicationContext())) {
-            EventButton();
-        } else {
-            checkconnection.ShowToast_Short(getApplicationContext(), "Bạn hãy kiểm tra lại kết nối");
-        }
+        EventButton();
+
     }
 
     private void EventButton() {
         btnXacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                long tongtien = 0;
+                for (int i = 0; i < MainActivity.manggiohang.size(); i++) {
+                    tongtien += MainActivity.manggiohang.get(i).getGiasp();
+                }
+                final long finalTongtien = tongtien;
                 final String ten = edtTenkh.getText().toString().trim();
                 final String sdt = edtSdt.getText().toString().trim();
                 final String diachi = edtDiaChi.getText().toString().trim();
-                if (ten.length() > 0 && sdt.length() > 0 && diachi.length() > 0) {
+                if (ten.length() > 0 && sdt.length() > 9 && diachi.length() > 0) {
+                    final ProgressDialog progressDialog=new ProgressDialog(ThongTinKhachHang.this);
+                    progressDialog.setMessage("Đang đặt hàng...");
+                    progressDialog.show();
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, server.Duongandonhang, new Response.Listener<String>() {
                         @Override
                         public void onResponse(final String madonhang) {
@@ -67,11 +76,12 @@ public class ThongTinKhachHang extends AppCompatActivity {
                                 StringRequest request = new StringRequest(Request.Method.POST, server.Duonganchitietdonhang, new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
+                                        progressDialog.dismiss();
                                         if (response.equals("1")) {
                                             MainActivity.manggiohang.clear();
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Bạn đã thêm dữ liệu giỏ hàng thành công");
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                            startActivity(intent);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                                            startActivity(intent);
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Mời bạn tiếp tục mua hàng");
                                         } else {
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Dữ liệu giỏ hàng của bạn đã bị lỗi");
@@ -80,7 +90,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
                                 }, new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-
+                                        progressDialog.dismiss();
                                     }
                                 }) {
                                     @Override
@@ -110,14 +120,18 @@ public class ThongTinKhachHang extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            progressDialog.dismiss();
                         }
                     }) {
                         @Override
                         protected Map<String, String> getParams() throws AuthFailureError {
                             HashMap<String, String> hashMap = new HashMap<String, String>();
-                            hashMap.put("tenkhachhang", ten);
+                            hashMap.put("tennguoidat", ten);
                             hashMap.put("sodienthoai", sdt);
                             hashMap.put("diachi", diachi);
+                            hashMap.put("idkhachhang", LoginActivity.prefConfig.readIdUser()+"");
+                            hashMap.put("ngaytao", Calendar.getInstance().getTimeInMillis()+"");
+                            hashMap.put("tongtien", finalTongtien+"");
                             return hashMap;
                         }
                     };
