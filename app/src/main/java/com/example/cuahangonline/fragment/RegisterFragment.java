@@ -21,13 +21,75 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterFragment extends Fragment {
-    private EditText edtUserName,edtPassWord,edtEmail;
+
+    private EditText edtUserName;
+    private EditText edtPassWord;
+    private EditText edtEmail;
     private Button btnRegister;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_register, container, false);
+    }
+
+    private Boolean validateUsername() {
+        String val = edtUserName.getText().toString();
+        String noWhiteSpace = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"; // tối thiểu 6 ký tự, ít nhất 1 chữ cái và 1 số
+
+        if (val.isEmpty()) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.username_empty));
+            return false;
+        } else if (val.length()<= 6) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.username_short));
+            return false;
+        } else if (val.length() >= 15) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.username_long));
+            return false;
+        } else if (!val.matches(noWhiteSpace)) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.username_nowhitespace));
+            return false;
+        } else {
+            edtUserName.setError(null);
+            edtUserName.setEnabled(false);
+            return true;
+        }
+    }
+
+    private Boolean validatePassword() {
+        String val = edtPassWord.getText().toString();
+        String passwordVal = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"; // tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường và 1 số
+
+        if (val.isEmpty()) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_empty));
+            return false;
+        } else if (val.length() <= 8){
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_short));
+            return false;
+        }else if (!val.matches(passwordVal)) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_weak));
+            return false;
+        } else {
+            edtPassWord.setError(null);
+            edtPassWord.setEnabled(false);
+            return true;
+        }
+    }
+
+    private Boolean validateEmail() {
+        String val = edtEmail.getText().toString();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+        if (val.isEmpty()) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.email_empty));
+            return false;
+        } else if (!val.matches(emailPattern)) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.email_invalid));
+            return false;
+        } else {
+            edtEmail.setEnabled(false);
+            return true;
+        }
     }
 
     @Override
@@ -43,8 +105,8 @@ public class RegisterFragment extends Fragment {
             public void onClick(View view) {
                 if (!edtUserName.getText().toString().equals("")&&!edtPassWord.getText().toString().equals("")&&!edtEmail.getText().toString().equals("") ){
 
-                    if (edtPassWord.getText().toString().length()<=6){
-                        LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_short));
+                    if (!validateUsername()|!validatePassword()|!validateEmail()) {
+
                     }else {
                         if (checkconnection.haveNetworkConnection(getContext())){
                             performRegister();

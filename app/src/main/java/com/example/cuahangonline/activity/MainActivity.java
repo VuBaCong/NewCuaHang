@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
     private Call<KhachHang> call;
     private ImageView ivUser;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,8 +199,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-                mangloaisp.add(new loaisp(888, "Đổi mật khẩu", "https://png.pngtree.com/png-vector/20190916/ourlarge/pngtree-info-icon-for-your-project-png-image_1731084.jpg"));
-                mangloaisp.add(new loaisp(999, "Đăng xuất", "https://png.pngtree.com/png-vector/20190916/ourlarge/pngtree-info-icon-for-your-project-png-image_1731084.jpg"));
+                mangloaisp.add(new loaisp(888, "Đổi mật khẩu", "https://png.pngtree.com/png-vector/20190917/ourlarge/pngtree-security-icon-vectors-png-image_1738054.jpg"));
+                mangloaisp.add(new loaisp(999, "Đăng xuất", "https://png.pngtree.com/png-vector/20190917/ourlarge/pngtree-logout-icon-vectors-png-image_1737872.jpg"));
                 loaispadapter.notifyDataSetChanged();
             }
         }, new Response.ErrorListener() {

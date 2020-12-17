@@ -72,24 +72,17 @@
 
             <RelativeLayout
                 android:layout_width="350dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg_btn"
-                android:orientation="horizontal"
-                android:paddingLeft="20dp">
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/facebook"
-                    android:tint="#fff" />
+                android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#00000000"
-                    android:text="Continue with Facebook"
+                    android:text="Sign In"
                     android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textSize="14sp" />
@@ -102,7 +95,7 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_edt2"
-                android:text="I'll will use email or phone"
+                android:text="Sign Up"
                 android:textAllCaps="false"
                 android:textColor="#8F8F8F"
                 android:textSize="14sp" />
@@ -135,32 +128,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="Already have account?"
-                android:textColor="#8F8F8F"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/btnLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="3dp"
-                android:gravity="center"
-                android:text="Login"
-                android:textColor="#2E2FE8"
-                android:textSize="14sp" />
-        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

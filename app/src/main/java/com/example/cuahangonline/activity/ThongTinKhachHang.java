@@ -62,7 +62,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
                 final String sdt = edtSdt.getText().toString().trim();
                 final String diachi = edtDiaChi.getText().toString().trim();
                 if (ten.length() > 0 && sdt.length() > 9 && diachi.length() > 0) {
-                    final ProgressDialog progressDialog=new ProgressDialog(ThongTinKhachHang.this);
+                    final ProgressDialog progressDialog = new ProgressDialog(ThongTinKhachHang.this);
                     progressDialog.setMessage("Đang đặt hàng...");
                     progressDialog.show();
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -81,7 +81,8 @@ public class ThongTinKhachHang extends AppCompatActivity {
                                             MainActivity.manggiohang.clear();
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Bạn đã thêm dữ liệu giỏ hàng thành công");
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);                                            startActivity(intent);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Mời bạn tiếp tục mua hàng");
                                         } else {
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Dữ liệu giỏ hàng của bạn đã bị lỗi");
@@ -129,9 +130,9 @@ public class ThongTinKhachHang extends AppCompatActivity {
                             hashMap.put("tennguoidat", ten);
                             hashMap.put("sodienthoai", sdt);
                             hashMap.put("diachi", diachi);
-                            hashMap.put("idkhachhang", LoginActivity.prefConfig.readIdUser()+"");
-                            hashMap.put("ngaytao", Calendar.getInstance().getTimeInMillis()+"");
-                            hashMap.put("tongtien", finalTongtien+"");
+                            hashMap.put("idkhachhang", LoginActivity.prefConfig.readIdUser() + "");
+                            hashMap.put("ngaytao", Calendar.getInstance().getTimeInMillis() + "");
+                            hashMap.put("tongtien", finalTongtien + "");
                             return hashMap;
                         }
                     };

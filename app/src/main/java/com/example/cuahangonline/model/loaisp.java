@@ -1,6 +1,7 @@
 package com.example.cuahangonline.model;
 
 public class loaisp {
+
     public int id;
     public String Tenloaisp;
     public String Hinhanhloaisp;

@@ -35,6 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class LoaiSanPhamActivity extends AppCompatActivity {
+
     private Toolbar toolbardt;
     private RecyclerView rcvSanPham;
     private ArrayList<SanPham> mangdt;
@@ -142,7 +143,6 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void Anhxa() {
         mangdt = new ArrayList<>();

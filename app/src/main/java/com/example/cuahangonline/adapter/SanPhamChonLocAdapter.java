@@ -20,6 +20,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SanPhamChonLocAdapter extends RecyclerView.Adapter<SanPhamChonLocAdapter.ItemHolder> {
+
     Context context;
     ArrayList<SanPham> arraysanpham;
 

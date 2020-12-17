@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DanhMucAdapter extends RecyclerView.Adapter<DanhMucAdapter.ItemHolder> {
+
     private ArrayList<DanhMuc> mangDanhMuc;
     private Context context;
 

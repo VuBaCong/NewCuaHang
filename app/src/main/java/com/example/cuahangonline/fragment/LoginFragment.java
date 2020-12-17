@@ -1,5 +1,6 @@
 package com.example.cuahangonline.fragment;
 
+import android.app.KeyguardManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,8 @@ import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
 
-    private EditText edtUsername,edtPassword;
+    private EditText edtUsername;
+    private EditText edtPassword;
     private Button btnLogin;
 
     @Override

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.service.autofill.Validator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,8 +20,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DoiMatKhauActivity extends AppCompatActivity {
+
     private Toolbar tbDoiMK;
-    private EditText edtPassWord, edtNewPassWord, edtCom;
+
+    private EditText edtPassWord;
+    private EditText edtNewPassWord;
+    private EditText edtCom;
     private Button btnDoiMK;
     private ArrayList<KhachHang> mangkhachhang;
 
@@ -32,6 +37,25 @@ public class DoiMatKhauActivity extends AppCompatActivity {
         AnhXa();
     }
 
+    private Boolean validateNewpassword() {
+        String val = edtNewPassWord.getText().toString();
+        String passwordVal = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"; // tối thiểu 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường và 1 số
+
+        if (val.isEmpty()) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_empty));
+            return false;
+        } else if (val.length() <= 8){
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_short));
+            return false;
+        }else if (!val.matches(passwordVal)) {
+            LoginActivity.prefConfig.displayToast(getResources().getString(R.string.password_weak));
+            return false;
+        } else {
+            edtNewPassWord.setError(null);
+            edtNewPassWord.setEnabled(false);
+            return true;
+        }
+    }
 
     private void DoiMatKhau() {
         mangkhachhang = new ArrayList<>();
@@ -44,17 +68,21 @@ public class DoiMatKhauActivity extends AppCompatActivity {
                     return;
                 }
                 String res = response.body().getResponse();
-                if (res.equals("ok")) {
-                    Toast.makeText(getApplicationContext(), "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
-                } else if (res.equals("failed")) {
-                    Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(getApplicationContext(), "Có lỗi xảy ra, xin vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                if (!validateNewpassword()){
+
+                }else {
+                    if (res.equals("ok")) {
+                        Toast.makeText(getApplicationContext(), "Đổi mật khẩu thành công.", Toast.LENGTH_SHORT).show();
+                    } else if (res.equals("failed")) {
+                        Toast.makeText(getApplicationContext(), "Sai mật khẩu, mời bạn nhập lại mật khẩu.", Toast.LENGTH_SHORT).show();
+                    } else
+                        Toast.makeText(getApplicationContext(), "Có lỗi xảy ra, xin vui lòng thử lại.", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<KhachHang> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Có lỗi xảy ra, xin vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Có lỗi xảy ra, xin vui lòng thử lại.", Toast.LENGTH_SHORT).show();
             }
         });
     }

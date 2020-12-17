@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 
 public class ChiTietSanPham extends AppCompatActivity {
+
     Toolbar toolbarChiTiet;
     ImageView imageViewChiTiet;
     TextView txtTen, txtGia, txtMoTa;

@@ -1,8 +1,8 @@
 package com.example.cuahangonline.utils;
 
 public class server {
-    //public static final String BASE_URL = "https://vbcong62.000webhostapp.com/";
-    public static final String BASE_URL = "http://192.168.1.4:8080/NewCuaHang/API/";
+    public static final String BASE_URL = "https://vbcong62.000webhostapp.com/";
+    //public static final String BASE_URL = "http://192.168.1.4:8080/NewCuaHang/API/";
     //public static String BASE_URL = "http://192.168.43.96:8080/NewCuaHang/API/";
 
     public static String Duongdanloaisp = BASE_URL +"getloaisp.php";

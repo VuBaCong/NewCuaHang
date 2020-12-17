@@ -8,7 +8,6 @@ import com.example.cuahangonline.R;
 
 public class TimKiemThongTin extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

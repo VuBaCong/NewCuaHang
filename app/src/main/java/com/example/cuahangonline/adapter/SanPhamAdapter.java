@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
+
     private ArrayList<SanPham> mangSanPham;
     private CallBackSanPhamClick callBackSanPhamClick;
 

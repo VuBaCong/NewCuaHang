@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class loaispadapter extends BaseAdapter {
+
     ArrayList<loaisp> arraylistloaisp;
     Context context;
 

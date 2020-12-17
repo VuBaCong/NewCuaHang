@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class SanPham implements Serializable {
+
     public int id;
     public String Tensp;
     public Integer Giasp;

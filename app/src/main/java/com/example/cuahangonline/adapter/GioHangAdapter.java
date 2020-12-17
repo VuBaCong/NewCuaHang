@@ -21,6 +21,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class GioHangAdapter extends BaseAdapter {
+
     Context context;
     ArrayList<Giohang> arrayGioHang;
     private CallBackGioHangLongClick callback;
