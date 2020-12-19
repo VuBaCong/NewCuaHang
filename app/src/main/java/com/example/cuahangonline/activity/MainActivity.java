@@ -137,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (i == (mangloaisp.size() - 2)) {
                     Intent intent = new Intent(getApplicationContext(), DoiMatKhauActivity.class);
                     startActivity(intent);
+                }else if (i == (mangloaisp.size() - 3)) {
+                    Intent intent = new Intent(getApplicationContext(), LichSuMuaHang.class);
+                    startActivity(intent);
                 } else {
                     Intent intent = new Intent(MainActivity.this, LoaiSanPhamActivity.class);
                     intent.putExtra("idloaisp", mangloaisp.get(i).getId());
@@ -199,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                mangloaisp.add(new loaisp(666, "Lịch sử mua hàng", "https://png.pngtree.com/png-vector/20190917/ourlarge/pngtree-security-icon-vectors-png-image_1738054.jpg"));
                 mangloaisp.add(new loaisp(888, "Đổi mật khẩu", "https://png.pngtree.com/png-vector/20190917/ourlarge/pngtree-security-icon-vectors-png-image_1738054.jpg"));
                 mangloaisp.add(new loaisp(999, "Đăng xuất", "https://png.pngtree.com/png-vector/20190917/ourlarge/pngtree-logout-icon-vectors-png-image_1737872.jpg"));
                 loaispadapter.notifyDataSetChanged();

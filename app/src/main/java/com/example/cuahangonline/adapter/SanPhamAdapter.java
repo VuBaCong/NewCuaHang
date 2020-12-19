@@ -32,7 +32,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.dong_dienthoai, parent, false);
+        View view = layoutInflater.inflate(R.layout.dong_sanpham, parent, false);
         return new ViewHolder(view);
     }
 

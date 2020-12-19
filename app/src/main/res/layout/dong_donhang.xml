@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="130dp"
     android:layout_margin="5dp"
     android:orientation="horizontal"
     android:weightSum="10">
@@ -9,69 +9,75 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="3"
-        android:gravity="center">
+        android:layout_weight="6"
+        android:orientation="vertical"
+        android:weightSum="4">
 
-        <ImageView
-            android:id="@+id/imageviewkhachhang"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_launcher_background" />
+        <TextView
+            android:id="@+id/textviewnguoimuahang"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Người nhận hàng: Vũ bá công"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textviewsodienthoai"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Số điện thoại: 0399955577"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textviewdiachi"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="Địa chỉ:"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_weight="7"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
         android:orientation="vertical"
         android:weightSum="3">
 
         <TextView
-            android:id="@+id/textviewtengiohang"
+            android:id="@+id/tvngaydathang"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+
+            android:layout_weight="1"
+            android:text="Ngày đặt hàng:"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textviewtrangthai"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="Tên của đơn hàng"
-            android:textColor="#B3000000"
+            android:text="Trạng thái"
+            android:textColor="@color/colorBlack"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/textviewgiagiohang"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="Giá đơn hàng"
+            android:text="Tổng tiền"
             android:textColor="@color/colorGiaTri"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/textviewngaymuahang"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:text="Ngày mua"
-            android:textColor="@color/colorBlack"
-            android:textSize="15sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonminus"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:textColor="#B3000000" />
-
-        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

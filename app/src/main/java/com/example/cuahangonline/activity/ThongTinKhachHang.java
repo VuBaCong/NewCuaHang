@@ -80,8 +80,8 @@ public class ThongTinKhachHang extends AppCompatActivity {
                                         if (response.equals("1")) {
                                             MainActivity.manggiohang.clear();
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Bạn đã thêm dữ liệu giỏ hàng thành công");
-                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            Intent intent = new Intent(getApplicationContext(), LichSuMuaHang.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
                                             checkconnection.ShowToast_Short(getApplicationContext(), "Mời bạn tiếp tục mua hàng");
                                         } else {
